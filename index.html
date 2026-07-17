@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YA NO VALES — Manuales de IA sin humo, en español</title>
+<meta name="description" content="La IA no va a quitarte el trabajo. Te lo va a quitar alguien que la usa. Manuales, prompts y sistemas en español — sin tecnicismos y sin humo.">
+<meta property="og:title" content="YA NO VALES — Manuales de IA sin humo">
+<meta property="og:description" content="Manuales, prompts y sistemas en español para ponerte al día con la IA. Todavía. Muévete.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --negro:#161616;
+    --negro-2:#1e1e1e;
+    --crema:#F4F1EA;
+    --crema-2:#EBE7DD;
+    --naranja:#E8A13A;
+    --gris:#8a8578;
+    --linea:rgba(22,22,22,.16);
+    --linea-osc:rgba(244,241,234,.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  ::selection{background:var(--naranja);color:var(--negro)}
+  body{font-family:'Archivo',sans-serif;background:var(--crema);color:var(--negro);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .mono{font-family:'IBM Plex Mono',monospace}
+
+  /* grano sutil */
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")}
+
+  /* ===== NAV ===== */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s ease, box-shadow .3s ease}
+  nav.solida{background:rgba(244,241,234,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+  .logo{font-family:'Anton',sans-serif;font-size:1.15rem;letter-spacing:.06em;text-transform:uppercase;display:flex;gap:.45rem}
+  .logo .tachado{position:relative}
+  .logo .tachado::after{content:"";position:absolute;left:-3%;right:-3%;top:50%;height:3px;background:var(--naranja);transform:rotate(-4deg)}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(22,22,22,.66);transition:color .2s}
+  .nav-links a:hover{color:var(--negro)}
+  .nav-tienda{border:1.5px solid var(--negro);padding:9px 18px;color:var(--negro)!important;transition:all .2s}
+  .nav-tienda:hover{background:var(--negro);color:var(--crema)!important}
+
+  /* ===== HERO ===== */
+  header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 80px}
+  .hero-kicker{font-family:'IBM Plex Mono',monospace;font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gris);margin-bottom:34px;display:flex;align-items:center;gap:14px}
+  .hero-kicker::before{content:"";width:44px;height:1.5px;background:var(--naranja)}
+  h1{font-family:'Anton',sans-serif;font-size:clamp(2.8rem,8.2vw,6.6rem);line-height:.98;text-transform:uppercase;letter-spacing:.005em;max-width:1050px}
+  h1 .fila{display:block}
+  h1 .contorno{color:transparent;-webkit-text-stroke:2px var(--negro)}
+  h1 .naranja{color:var(--naranja)}
+  .hero-abajo{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-top:56px;flex-wrap:wrap}
+  .hero-sub{max-width:470px;font-size:1.06rem;font-weight:500;color:rgba(22,22,22,.78)}
+  .hero-sub b{color:var(--negro)}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:17px 30px;border:1.5px solid var(--negro);transition:all .22s ease;position:relative;overflow:hidden}
+  .btn span{position:relative;z-index:1}
+  .btn::before{content:"";position:absolute;inset:0;background:var(--naranja);transform:translateY(101%);transition:transform .28s cubic-bezier(.7,0,.2,1)}
+  .btn:hover::before{transform:translateY(0)}
+  .btn:hover{border-color:var(--naranja)}
+  .btn-lleno{background:var(--negro);color:var(--crema)}
+  .btn-lleno:hover{color:var(--negro)}
+  .btn-vacio{color:var(--negro)}
+  .hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gris);animation:flota 2.2s ease-in-out infinite}
+  @keyframes flota{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
+
+  /* ===== CINTA ===== */
+  .cinta{background:var(--negro);color:var(--crema);overflow:hidden;padding:15px 0}
+  .cinta-inner{display:flex;gap:56px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;animation:desliza 26s linear infinite;width:max-content}
+  .cinta-inner b{color:var(--naranja);font-weight:600}
+  @keyframes desliza{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== SECCIONES ===== */
+  section{padding:110px 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:baseline;margin-bottom:16px}
+  .sec-num{font-family:'Anton',sans-serif;font-size:clamp(3rem,6vw,4.6rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(22,22,22,.28)}
+  .oscura .sec-num{-webkit-text-stroke:1.5px rgba(244,241,234,.3)}
+  h2{font-family:'Anton',sans-serif;font-size:clamp(1.8rem,4vw,3rem);text-transform:uppercase;line-height:1.04}
+  .sec-desc{max-width:620px;margin:0 0 56px 0;font-size:1.04rem;color:rgba(22,22,22,.72)}
+  .oscura .sec-desc{color:rgba(244,241,234,.66)}
+
+  /* ===== CARDS ===== */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:22px}
+  .card{border:1.5px solid var(--linea);background:var(--crema);padding:30px 28px;display:flex;flex-direction:column;min-height:320px;position:relative;transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease}
+  .card:hover{transform:translateY(-6px);border-color:var(--negro);box-shadow:0 18px 40px -18px rgba(22,22,22,.35)}
+  .card-tag{font-family:'IBM Plex Mono',monospace;font-size:.64rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:8px}
+  .punto{width:7px;height:7px;border-radius:50%;background:var(--naranja);display:inline-block}
+  .tag-gratis .punto{background:#3f9e6c}
+  .card h3{font-family:'Anton',sans-serif;font-size:1.32rem;text-transform:uppercase;line-height:1.12;letter-spacing:.015em;margin-bottom:12px}
+  .card p{font-size:.92rem;color:rgba(22,22,22,.7);flex-grow:1;margin-bottom:26px}
+  .card-foot{display:flex;align-items:center;justify-content:space-between;border-top:1.5px solid var(--linea);padding-top:18px}
+  .precio{font-family:'Anton',sans-serif;font-size:1.5rem;letter-spacing:.02em}
+  .precio .antes{font-size:.95rem;color:var(--gris);text-decoration:line-through;margin-right:8px}
+  .precio small{display:block;font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.12em;color:var(--gris);text-transform:uppercase;margin-top:2px}
+  .card-btn{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px;color:var(--negro);position:relative}
+  .card-btn::after{content:"→";transition:transform .2s}
+  .card-btn:hover::after{transform:translateX(5px)}
+  .card-btn:hover{color:#b87d20}
+  .card.destacada{background:var(--negro);color:var(--crema);border-color:var(--negro)}
+  .card.destacada p{color:rgba(244,241,234,.7)}
+  .card.destacada .card-foot{border-top-color:var(--linea-osc)}
+  .card.destacada .card-btn{color:var(--naranja)}
+  .card.destacada:hover{box-shadow:0 18px 44px -16px rgba(232,161,58,.4)}
+  .card .banda{position:absolute;top:0;right:0;background:var(--naranja);color:var(--negro);font-family:'IBM Plex Mono',monospace;font-size:.6rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;padding:7px 13px}
+  .card.pronto{opacity:.5;pointer-events:none}
+  .card.pronto:hover{transform:none;box-shadow:none;border-color:var(--linea)}
+
+  /* seccion oscura */
+  .oscura{background:var(--negro);color:var(--crema)}
+  .oscura .card{background:var(--negro-2);border-color:var(--linea-osc);color:var(--crema)}
+  .oscura .card p{color:rgba(244,241,234,.62)}
+  .oscura .card:hover{border-color:var(--crema)}
+  .oscura .card-foot{border-top-color:var(--linea-osc)}
+  .oscura .card-btn{color:var(--naranja)}
+  .oscura .card.destacada{background:var(--crema);color:var(--negro);border-color:var(--crema)}
+  .oscura .card.destacada p{color:rgba(22,22,22,.7)}
+  .oscura .card.destacada .card-foot{border-top-color:var(--linea)}
+  .oscura .card.destacada .card-btn{color:#b87d20}
+
+  /* ===== STATS ===== */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1.5px solid var(--linea);border-bottom:1.5px solid var(--linea)}
+  .stat{padding:44px 28px;border-right:1.5px solid var(--linea);text-align:left}
+  .stat:last-child{border-right:0}
+  .stat .cifra{font-family:'Anton',sans-serif;font-size:2.9rem;line-height:1;color:var(--negro)}
+  .stat .cifra span{color:var(--naranja)}
+  .stat .etiq{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gris);margin-top:10px}
+
+  /* ===== CTA FINAL ===== */
+  .final{padding:130px 0;text-align:center;position:relative}
+  .final h2{font-size:clamp(2.2rem,6vw,4.4rem);margin-bottom:22px}
+  .final h2 .contorno{color:transparent;-webkit-text-stroke:1.8px var(--negro)}
+  .final p{max-width:520px;margin:0 auto 44px;font-size:1.05rem;color:rgba(22,22,22,.72)}
+  .final .hero-ctas{justify-content:center}
+
+  footer{background:var(--negro);color:var(--crema);padding:56px 0 40px}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+  .foot-logo{font-family:'Anton',sans-serif;font-size:1.6rem;text-transform:uppercase;letter-spacing:.04em}
+  .foot-logo .tachado{position:relative}
+  .foot-logo .tachado::after{content:"";position:absolute;left:-3%;right:-3%;top:50%;height:4px;background:var(--naranja);transform:rotate(-4deg)}
+  .foot-lema{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--naranja);margin-top:10px}
+  .foot-links{display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem}
+  .foot-links a{color:rgba(244,241,234,.66);transition:color .2s}
+  .foot-links a:hover{color:var(--naranja)}
+  .foot-bajo{margin-top:48px;padding-top:24px;border-top:1px solid var(--linea-osc);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,234,.4)}
+
+  /* reveal */
+  .rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease, transform .7s ease}
+  .rev.visto{opacity:1;transform:none}
+  .rev-d1{transition-delay:.08s}.rev-d2{transition-delay:.16s}.rev-d3{transition-delay:.24s}
+
+  @media (max-width:760px){
+    .nav-links a:not(.nav-tienda){display:none}
+    section{padding:76px 0}
+    header{padding:110px 0 70px}
+    .sec-head{grid-template-columns:1fr;gap:8px}
+    .stat{border-right:0;border-bottom:1.5px solid var(--linea);padding:30px 20px}
+    .stat:last-child{border-bottom:0}
+    .card{min-height:auto}
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">YA NO <span class="tachado">VALES</span></a>
+    <div class="nav-links">
+      <a href="#gratis">Gratis</a>
+      <a href="#serie">La serie</a>
+      <a href="#web">Web</a>
+      <a href="#verticales">Por casos</a>
+      <a href="#claudecode">Claude Code</a>
+      <a class="nav-tienda" href="https://yanovales.gumroad.com" target="_blank" rel="noopener">Tienda</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="wrap">
+    <p class="hero-kicker">Manuales · Prompts · Sistemas · En español</p>
+    <h1>
+      <span class="fila">La IA no va a</span>
+      <span class="fila contorno">quitarte el trabajo.</span>
+      <span class="fila">Te lo va a quitar</span>
+      <span class="fila naranja">alguien que la usa.</span>
+    </h1>
+    <div class="hero-abajo">
+      <p class="hero-sub">Manuales que se leen en una tarde, prompts que funcionan a la primera y sistemas que ordenan tu semana. <b>Sin tecnicismos. Sin humo.</b> Para que ese alguien seas tú.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-lleno" href="#gratis"><span>Empieza gratis</span></a>
+        <a class="btn btn-vacio" href="#serie"><span>Ver manuales</span></a>
+      </div>
+    </div>
+  </div>
+  <span class="hero-scroll">Scroll</span>
+</header>
+
+<div class="cinta" aria-hidden="true">
+  <div class="cinta-inner">
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+  </div>
+</div>
+
+<!-- ===== STATS ===== -->
+<section style="padding:0">
+  <div class="wrap" style="padding-top:70px;padding-bottom:70px">
+    <div class="stats rev">
+      <div class="stat"><div class="cifra">17<span>+</span></div><div class="etiq">Manuales publicados</div></div>
+      <div class="stat"><div class="cifra">308</div><div class="etiq">Prompts probados</div></div>
+      <div class="stat"><div class="cifra">2</div><div class="etiq">Guías gratis</div></div>
+      <div class="stat"><div class="cifra">0<span>%</span></div><div class="etiq">Humo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 01 GRATIS ===== -->
+<section id="gratis" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">01</span><h2>Empieza gratis</h2></div>
+    <p class="sec-desc rev">Nada de "regístrate para ver una demo". Dos PDFs completos para comprobar cómo trabajamos antes de soltar un euro.</p>
+    <div class="grid">
+      <div class="card rev">
+        <span class="card-tag tag-gratis"><span class="punto"></span>Gratis · PDF directo</span>
+        <h3>20 prompts que ahorran 10 h/semana</h3>
+        <p>El clásico YNV: 20 prompts probados para el trabajo diario, listos para copiar, rellenar los corchetes y disparar.</p>
+        <div class="card-foot">
+          <span class="precio">0€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/20-prompts-gratis" target="_blank" rel="noopener">Descargar</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="banda">Nuevo</span>
+        <span class="card-tag tag-gratis"><span class="punto"></span>Gratis · PDF directo</span>
+        <h3>Web Express: tu primera web con Claude</h3>
+        <p>De cero a web publicada en 4 pasos y menos de una hora. Sin saber programar, sin pagar a nadie. Prompt maestro incluido.</p>
+        <div class="card-foot">
+          <span class="precio">0€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/web-express-gratis" target="_blank" rel="noopener">Descargar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 02 LA SERIE ===== -->
+<section id="serie" class="oscura">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">02</span><h2>La serie: de cero a criterio</h2></div>
+    <p class="sec-desc rev">La ruta completa en 3 volúmenes — entender, practicar, aplicar. O los tres juntos con un 26% de descuento, que es lo que hace la gente con prisa.</p>
+    <div class="grid">
+      <div class="card rev">
+        <span class="card-tag"><span class="punto"></span>Vol.1 · Base</span>
+        <h3>Manual de IA para gente normal</h3>
+        <p>Qué es la IA de verdad, los 10 errores de novato, las 15 herramientas que importan, 25 prompts y plan de 7 días.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol1-manual-ia" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="card-tag"><span class="punto"></span>Vol.2 · Herramientas</span>
+        <h3>308 prompts que trabajan por ti</h3>
+        <p>No es un libro: es una caja de herramientas en 7 categorías. Rellenas los corchetes, pegas, y la IA trabaja.</p>
+        <div class="card-foot">
+          <span class="precio">15€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol2-308-prompts" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d2">
+        <span class="card-tag"><span class="punto"></span>Vol.3 · Aplicación</span>
+        <h3>IA para el trabajo</h3>
+        <p>Tu jornada reconstruida tarea a tarea: emails, presentaciones, reuniones, Excel y documentos. Con los flujos exactos.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol3-ia-trabajo" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card destacada rev rev-d3">
+        <span class="banda">La que se llevan</span>
+        <span class="card-tag"><span class="punto"></span>Bundle · 3 volúmenes</span>
+        <h3>La serie completa</h3>
+        <p>VOL.1 + VOL.2 + VOL.3: la ruta entera, en orden, con todas las actualizaciones futuras de los tres incluidas.</p>
+        <div class="card-foot">
+          <span class="precio"><span class="antes">53€</span>39€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/serie-completa" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 03 WEB ===== -->
+<section id="web">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">03</span><h2>Crea tu web sin ser programador</h2></div>
+    <p class="sec-desc rev">Una agencia te cobraba 1.500€ por esto. El lote WEB te enseña a hacerlo con Claude: gratis la primera, con dominio propio la seria.</p>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">
+      <div class="card rev">
+        <span class="card-tag tag-gratis"><span class="punto"></span>Nivel 1 · Gratis</span>
+        <h3>Web Express</h3>
+        <p>Tu primera web publicada hoy, en una hora: método de 4 pasos, prompt maestro y 3 prompts extra (linktree, portfolio, negocio local). El aperitivo.</p>
+        <div class="card-foot">
+          <span class="precio">0€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/web-express-gratis" target="_blank" rel="noopener">Descargar</a>
+        </div>
+      </div>
+      <div class="card destacada rev rev-d1">
+        <span class="banda">Nuevo</span>
+        <span class="card-tag"><span class="punto"></span>Nivel 2 · Manual completo</span>
+        <h3>Web Pro: de cero a web con tu dominio</h3>
+        <p>7 partes: multi-página, hosting gratis, dominio propio desde 12€/año, formulario, Claude Code para no programadores, SEO honesto, 21 prompts y plan de 7 días.</p>
+        <div class="card-foot">
+          <span class="precio">24€<small>Pago único</small></span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/web-pro" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 04 VERTICALES ===== -->
+<section id="verticales" class="oscura">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">04</span><h2>IA para tu caso concreto</h2></div>
+    <p class="sec-desc rev">El método general está en la serie. Esto es lo mismo, aterrizado en TU situación: oposiciones, estudios, negocio propio o tu sistema personal.</p>
+    <div class="grid">
+      <div class="card rev">
+        <span class="card-tag"><span class="punto"></span>Vol.4 · Opositores</span>
+        <h3>IA para opositores</h3>
+        <p>Tests infinitos de tu temario, repaso espaciado, NotebookLM como tutor y tu cuartel en Notion. Legal y sin humo.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol4-ia-opositores" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="card-tag"><span class="punto"></span>Vol.5 · Estudiantes</span>
+        <h3>IA para estudiantes</h3>
+        <p>El sistema de estudio con IA para carrera, FP y selectividad: apuntes, esquemas, exámenes y trabajos con criterio.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol5-ia-estudiantes" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d2">
+        <span class="card-tag"><span class="punto"></span>Vol.6 · Autónomos</span>
+        <h3>IA para autónomos</h3>
+        <p>Presupuestos, clientes, facturas y marketing con la IA de copiloto. Recupera horas cada semana para facturar más.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/vol6-ia-autonomos" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d3">
+        <span class="card-tag"><span class="punto"></span>Pack Núcleo</span>
+        <h3>Tu sistema operativo personal con IA</h3>
+        <p>El ebook central YNV: un solo lugar donde capturar, decidir, planificar y ejecutar tu vida y tu trabajo, con Notion + IA.</p>
+        <div class="card-foot">
+          <span class="precio">19€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/nucleo-sistema-operativo-personal" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card pronto rev">
+        <span class="card-tag"><span class="punto"></span>Vol.7-10</span>
+        <h3>Contenido · Empleo · Finanzas · Automatización</h3>
+        <p>Los cuatro últimos verticales de la serie, en producción. Muy pronto en la tienda.</p>
+        <div class="card-foot"><span class="precio">—</span><span class="card-btn" style="pointer-events:none">En el horno</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 05 CLAUDE CODE ===== -->
+<section id="claudecode">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">05</span><h2>Claude Code: el nivel pro</h2></div>
+    <p class="sec-desc rev">Dos series por tomos para pasar de "uso la IA" a "la IA trabaja para mí". AVANZADO si vienes del chat; EXTREMO si quieres agentes, MCP y producto.</p>
+    <div class="grid">
+      <div class="card rev">
+        <span class="card-tag"><span class="punto"></span>Avanzado · T1</span>
+        <h3>Fundamentos Pro</h3>
+        <p>La base de Claude Code explicada para no programadores: instalación, flujo de trabajo y primeros proyectos serios.</p>
+        <div class="card-foot">
+          <span class="precio">25€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cca-t1-fundamentos" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="card-tag"><span class="punto"></span>Avanzado · T2</span>
+        <h3>CLAUDE.md y memoria</h3>
+        <p>Que tu IA recuerde tu proyecto, tus reglas y tu forma de trabajar: el tomo de la memoria persistente.</p>
+        <div class="card-foot">
+          <span class="precio">25€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cca-t2-memoria" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d2">
+        <span class="card-tag"><span class="punto"></span>Avanzado · T3</span>
+        <h3>Skills</h3>
+        <p>Empaqueta tus flujos en habilidades reutilizables: la diferencia entre pedirle cosas a la IA y tener un equipo entrenado.</p>
+        <div class="card-foot">
+          <span class="precio">25€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cca-t3-skills" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev">
+        <span class="card-tag"><span class="punto"></span>Extremo · T1</span>
+        <h3>Agent SDK</h3>
+        <p>Construye tus propios agentes sobre el SDK de Claude: de usuario avanzado a creador de herramientas.</p>
+        <div class="card-foot">
+          <span class="precio">29€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cce-t1-agent-sdk" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="card-tag"><span class="punto"></span>Extremo · T2</span>
+        <h3>Servidores MCP a medida</h3>
+        <p>Conecta la IA a tus herramientas reales creando tus propios servidores MCP. El tomo de la integración total.</p>
+        <div class="card-foot">
+          <span class="precio">29€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cce-t2-servidores-mcp" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card rev rev-d2">
+        <span class="card-tag"><span class="punto"></span>Extremo · T3</span>
+        <h3>Orquestación multiagente</h3>
+        <p>Varios agentes trabajando en paralelo, coordinados: el patrón con el que un equipo de uno rinde como cinco.</p>
+        <div class="card-foot">
+          <span class="precio">29€</span>
+          <a class="card-btn" href="https://yanovales.gumroad.com/l/cce-t3-orquestacion" target="_blank" rel="noopener">Lo quiero</a>
+        </div>
+      </div>
+      <div class="card pronto rev">
+        <span class="card-tag"><span class="punto"></span>T4-T10 de ambas series</span>
+        <h3>MCP · Subagentes · Hooks · Git · Evals · RAG…</h3>
+        <p>El resto de tomos de las dos series, en producción y saliendo por orden. Muy pronto.</p>
+        <div class="card-foot"><span class="precio">—</span><span class="card-btn" style="pointer-events:none">En el horno</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="final">
+  <div class="wrap rev">
+    <h2><span class="contorno">Leerlo no cuenta.</span><br>Cuenta moverse.</h2>
+    <p>Cada semana que lo pospones, alguien de tu sector la aprovecha. Empieza por un PDF gratis y decide con hechos, no con miedo.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-lleno" href="https://yanovales.gumroad.com/l/20-prompts-gratis" target="_blank" rel="noopener"><span>Dame los 20 prompts</span></a>
+      <a class="btn btn-vacio" href="https://yanovales.gumroad.com" target="_blank" rel="noopener"><span>Ver la tienda entera</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">YA NO <span class="tachado">VALES</span></div>
+        <div class="foot-lema">Todavía. Muévete.</div>
+      </div>
+      <div class="foot-links">
+        <a href="https://yanovales.gumroad.com" target="_blank" rel="noopener">Tienda Gumroad</a>
+        <a href="https://www.instagram.com/yanovales_" target="_blank" rel="noopener">Instagram @yanovales_</a>
+        <a href="https://linktr.ee/yanovales" target="_blank" rel="noopener">Linktree</a>
+      </div>
+      <div class="foot-links">
+        <a href="#gratis">Guías gratis</a>
+        <a href="#serie">La serie</a>
+        <a href="#web">Lote Web</a>
+        <a href="#claudecode">Claude Code</a>
+      </div>
+    </div>
+    <div class="foot-bajo">
+      <span>© 2026 Ya No Vales</span>
+      <span>Manuales de IA en español · Sin humo</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // nav sólida al hacer scroll
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>{nav.classList.toggle('solida',scrollY>40)},{passive:true});
+  // reveal on scroll
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+</script>
+<!-- Checkout de Gumroad en overlay (el cliente compra sin salir de la web) -->
+<script src="https://gumroad.com/js/gumroad.js"></script>
+
+</body>
+</html>
