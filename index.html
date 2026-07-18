@@ -4,10 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>YA NO VALES — Manuales de IA sin humo, en español</title>
-<meta name="description" content="La IA no va a quitarte el trabajo. Te lo va a quitar alguien que la usa. Manuales, prompts y sistemas en español — sin tecnicismos y sin humo.">
+<meta name="description" content="La IA no va a quitarte el trabajo. Te lo va a quitar alguien que la usa. Manuales, prompts y sistemas en español — sin tecnicismos y sin humo. Disponibles en PDF y en Amazon Kindle.">
 <meta property="og:title" content="YA NO VALES — Manuales de IA sin humo">
-<meta property="og:description" content="Manuales, prompts y sistemas en español para ponerte al día con la IA. Todavía. Muévete.">
+<meta property="og:description" content="Manuales, prompts y sistemas en español para ponerte al día con la IA. En PDF y en Amazon. Todavía. Muévete.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://yanovales.es">
+<meta name="theme-color" content="#161616">
+<link rel="canonical" href="https://yanovales.es">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -44,8 +47,8 @@
   .nav-links{display:flex;gap:28px;align-items:center}
   .nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(22,22,22,.66);transition:color .2s}
   .nav-links a:hover{color:var(--negro)}
-  .nav-tienda{border:1.5px solid var(--negro);padding:9px 18px;color:var(--negro)!important;transition:all .2s}
-  .nav-tienda:hover{background:var(--negro);color:var(--crema)!important}
+  .nav-cta{border:1.5px solid var(--negro);padding:9px 18px;color:var(--negro)!important;transition:all .2s}
+  .nav-cta:hover{background:var(--negro);color:var(--crema)!important}
 
   /* ===== HERO ===== */
   header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 80px}
@@ -123,6 +126,44 @@
   .oscura .card.destacada .card-foot{border-top-color:var(--linea)}
   .oscura .card.destacada .card-btn{color:#b87d20}
 
+  /* ===== AMAZON / KINDLE ===== */
+  .tag-amazon .punto{background:#FF9900}
+  .kindle-nota{margin-top:44px;border-top:1.5px solid var(--linea);padding-top:26px;font-size:.9rem;color:rgba(22,22,22,.66);max-width:640px}
+  .oscura .kindle-nota{border-top-color:var(--linea-osc);color:rgba(244,241,234,.6)}
+
+  /* ===== LISTA / CAPTURA ===== */
+  .lista-sec{background:var(--naranja);color:var(--negro);padding:96px 0}
+  .lista-caja{max-width:720px;margin:0 auto;text-align:center}
+  .lista-caja h2{font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:18px}
+  .lista-caja h2 .subrayado{color:transparent;-webkit-text-stroke:2px var(--negro)}
+  .lista-caja p{color:rgba(22,22,22,.78);font-size:1.02rem;max-width:520px;margin:0 auto 34px}
+  .lista-form{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .lista-form input{font-family:'IBM Plex Mono',monospace;font-size:.85rem;padding:16px 20px;min-width:290px;background:var(--crema);border:1.5px solid var(--negro);color:var(--negro);outline:none;transition:box-shadow .2s}
+  .lista-form input::placeholder{color:rgba(22,22,22,.42)}
+  .lista-form input:focus{box-shadow:0 0 0 3px rgba(22,22,22,.18)}
+  .lista-form button{font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:16px 30px;background:var(--negro);color:var(--crema);border:1.5px solid var(--negro);cursor:pointer;transition:all .2s}
+  .lista-form button:hover{background:var(--crema);color:var(--negro)}
+  .lista-nota{font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(22,22,22,.55);margin-top:20px}
+  .lista-ok{display:none;background:var(--negro);color:var(--crema);padding:30px 24px;margin-top:8px}
+  .lista-ok.visible{display:block;animation:aparece .4s ease}
+  @keyframes aparece{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  .lista-ok .codigo{font-family:'Anton',sans-serif;font-size:2.4rem;letter-spacing:.06em;color:var(--naranja);display:block;margin:10px 0 6px}
+  .lista-ok small{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,234,.55)}
+
+  /* ===== BANNER FIJO ===== */
+  .banner{position:fixed;left:0;right:0;bottom:0;z-index:200;background:var(--naranja);color:var(--negro);transform:translateY(100%);transition:transform .45s cubic-bezier(.7,0,.2,1)}
+  .banner.visible{transform:translateY(0)}
+  .banner-inner{max-width:1200px;margin:0 auto;padding:15px 56px 15px 28px;display:flex;align-items:center;justify-content:center;gap:22px;flex-wrap:wrap}
+  .banner-txt{font-family:'IBM Plex Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.04em}
+  .banner-txt b{font-weight:600}
+  .banner-form{display:flex;gap:8px;flex-wrap:wrap}
+  .banner-form input{font-family:'IBM Plex Mono',monospace;font-size:.76rem;padding:11px 15px;min-width:230px;background:var(--crema);border:1.5px solid var(--negro);color:var(--negro);outline:none}
+  .banner-form input::placeholder{color:rgba(22,22,22,.45)}
+  .banner-form button{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:11px 20px;background:var(--negro);color:var(--crema);border:1.5px solid var(--negro);cursor:pointer;transition:opacity .2s}
+  .banner-form button:hover{opacity:.82}
+  .banner-cerrar{position:absolute;right:16px;top:50%;transform:translateY(-50%);background:none;border:0;font-family:'IBM Plex Mono',monospace;font-size:1.1rem;line-height:1;color:var(--negro);cursor:pointer;padding:8px;opacity:.55;transition:opacity .2s}
+  .banner-cerrar:hover{opacity:1}
+
   /* ===== STATS ===== */
   .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));border-top:1.5px solid var(--linea);border-bottom:1.5px solid var(--linea)}
   .stat{padding:44px 28px;border-right:1.5px solid var(--linea);text-align:left}
@@ -147,6 +188,8 @@
   .foot-links{display:flex;flex-direction:column;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:.78rem}
   .foot-links a{color:rgba(244,241,234,.66);transition:color .2s}
   .foot-links a:hover{color:var(--naranja)}
+  .foot-titulo{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--naranja);margin-bottom:4px}
+  .foot-nota{font-size:.7rem;line-height:1.7;color:rgba(244,241,234,.4)}
   .foot-bajo{margin-top:48px;padding-top:24px;border-top:1px solid var(--linea-osc);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(244,241,234,.4)}
 
   /* reveal */
@@ -155,13 +198,19 @@
   .rev-d1{transition-delay:.08s}.rev-d2{transition-delay:.16s}.rev-d3{transition-delay:.24s}
 
   @media (max-width:760px){
-    .nav-links a:not(.nav-tienda){display:none}
+    .nav-links a:not(.nav-cta){display:none}
     section{padding:76px 0}
     header{padding:110px 0 70px}
     .sec-head{grid-template-columns:1fr;gap:8px}
     .stat{border-right:0;border-bottom:1.5px solid var(--linea);padding:30px 20px}
     .stat:last-child{border-bottom:0}
     .card{min-height:auto}
+    .lista-form input,.banner-form input{min-width:0;width:100%}
+    .lista-form,.banner-form{width:100%}
+    .lista-form button,.banner-form button{width:100%}
+    .banner-inner{padding:14px 44px 14px 20px;gap:12px}
+    .banner-txt{font-size:.72rem;text-align:center}
+    footer{padding-bottom:120px}
   }
 </style>
 </head>
@@ -173,10 +222,11 @@
     <div class="nav-links">
       <a href="#gratis">Gratis</a>
       <a href="#serie">La serie</a>
+      <a href="#amazon">Amazon</a>
       <a href="#web">Web</a>
       <a href="#verticales">Por casos</a>
       <a href="#claudecode">Claude Code</a>
-      <a class="nav-tienda" href="https://yanovales.gumroad.com" target="_blank" rel="noopener">Tienda</a>
+      <a class="nav-cta" href="#lista">Quiero el 11%</a>
     </div>
   </div>
 </nav>
@@ -203,8 +253,8 @@
 
 <div class="cinta" aria-hidden="true">
   <div class="cinta-inner">
-    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
-    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>También en <b>Amazon Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>También en <b>Amazon Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
   </div>
 </div>
 
@@ -212,9 +262,9 @@
 <section style="padding:0">
   <div class="wrap" style="padding-top:70px;padding-bottom:70px">
     <div class="stats rev">
-      <div class="stat"><div class="cifra">17<span>+</span></div><div class="etiq">Manuales publicados</div></div>
+      <div class="stat"><div class="cifra">21<span>+</span></div><div class="etiq">Manuales publicados</div></div>
       <div class="stat"><div class="cifra">308</div><div class="etiq">Prompts probados</div></div>
-      <div class="stat"><div class="cifra">2</div><div class="etiq">Guías gratis</div></div>
+      <div class="stat"><div class="cifra">4</div><div class="etiq">Títulos en Amazon</div></div>
       <div class="stat"><div class="cifra">0<span>%</span></div><div class="etiq">Humo</div></div>
     </div>
   </div>
@@ -296,10 +346,70 @@
   </div>
 </section>
 
-<!-- ===== 03 WEB ===== -->
-<section id="web">
+<!-- ===== 03 AMAZON / KINDLE ===== -->
+<section id="amazon">
   <div class="wrap">
-    <div class="sec-head rev"><span class="sec-num">03</span><h2>Crea tu web sin ser programador</h2></div>
+    <div class="sec-head rev"><span class="sec-num">03</span><h2>Serie Express: en Amazon, desde 2,99&nbsp;€</h2></div>
+    <p class="sec-desc rev">Cuatro manuales breves, uno por problema concreto. Se leen en una tarde y se aplican esa misma noche. En Kindle, con Kindle Unlimited y con la comodidad de comprarlos donde ya tienes la cuenta.</p>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════
+         PENDIENTE AL PUBLICAR EN KDP
+         Ahora mismo los 4 botones llevan a una BÚSQUEDA en Amazon.es (funciona en
+         cuanto Amazon indexa, 24-72 h tras publicar). En cuanto tengas el ASIN de
+         cada libro en la ficha de KDP, sustituye el href por:
+             https://www.amazon.es/dp/ASIN
+         Son 4 cambios, uno por tarjeta. Busca "amazon.es/s?k=" para localizarlos.
+         ═══════════════════════════════════════════════════════════════════════ -->
+
+    <div class="grid">
+      <div class="card rev">
+        <span class="banda">Nuevo</span>
+        <span class="card-tag tag-amazon"><span class="punto"></span>Express A · Kindle</span>
+        <h3>Emprende con IA</h3>
+        <p>De cero a un negocio pequeño y real en cuatro pasos: vende lo que ya tienes, monta tu marca, abre tu tienda y publica tu primer producto digital. Sin programar y sin diseñador.</p>
+        <div class="card-foot">
+          <span class="precio">4,99€<small>Kindle · 62 págs</small></span>
+          <a class="card-btn" href="https://www.amazon.es/s?k=Emprende+con+IA+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+        </div>
+      </div>
+      <div class="card rev rev-d1">
+        <span class="card-tag tag-amazon"><span class="punto"></span>Express B · Kindle</span>
+        <h3>Consigue el Trabajo</h3>
+        <p>Tu CV no lo lee un humano: lo lee un software. Las tres pruebas por separado — el filtro ATS, lo que hay que escribir y la prueba en directo. Con 45 prompts y simulacro de criba.</p>
+        <div class="card-foot">
+          <span class="precio">3,99€<small>Kindle · 45 págs</small></span>
+          <a class="card-btn" href="https://www.amazon.es/s?k=Consigue+el+Trabajo+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+        </div>
+      </div>
+      <div class="card rev rev-d2">
+        <span class="card-tag tag-amazon"><span class="punto"></span>Express C · Kindle</span>
+        <h3>Tu Vida Resuelta</h3>
+        <p>El cansancio que no viene del trabajo, sino de decidir cosas pequeñas todo el rato. Papeleo, comidas y viajes convertidos en sistemas que se ejecutan casi solos. 45 prompts incluidos.</p>
+        <div class="card-foot">
+          <span class="precio">3,99€<small>Kindle · 47 págs</small></span>
+          <a class="card-btn" href="https://www.amazon.es/s?k=Tu+Vida+Resuelta+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+        </div>
+      </div>
+      <div class="card destacada rev rev-d3">
+        <span class="banda">El más barato</span>
+        <span class="card-tag tag-amazon"><span class="punto"></span>Express D · Kindle</span>
+        <h3>IA para Estudiar</h3>
+        <p>Inglés y deberes, usando la IA como profesor y no como atajo. Incluye la parte escrita para madres y padres: cómo detectar si la usan para copiar y qué hacer cuando lo hacen.</p>
+        <div class="card-foot">
+          <span class="precio">2,99€<small>Kindle · 30 págs</small></span>
+          <a class="card-btn" href="https://www.amazon.es/s?k=IA+para+Estudiar+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+        </div>
+      </div>
+    </div>
+
+    <p class="kindle-nota rev"><b>¿Kindle o PDF?</b> Los Express son la puerta de entrada: cortos, baratos y en Amazon. Los manuales largos de esta web son PDF y se compran aquí — pero también puedes mandarlos a tu Kindle desde <a href="https://www.amazon.es/sendtokindle" target="_blank" rel="noopener" style="border-bottom:1.5px solid var(--naranja)">amazon.es/sendtokindle</a>. Ninguna compra te ata a un dispositivo.</p>
+  </div>
+</section>
+
+<!-- ===== 04 WEB ===== -->
+<section id="web" class="oscura">
+  <div class="wrap">
+    <div class="sec-head rev"><span class="sec-num">04</span><h2>Crea tu web sin ser programador</h2></div>
     <p class="sec-desc rev">Una agencia te cobraba 1.500€ por esto. El lote WEB te enseña a hacerlo con Claude: gratis la primera, con dominio propio la seria.</p>
     <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(340px,1fr))">
       <div class="card rev">
@@ -325,10 +435,10 @@
   </div>
 </section>
 
-<!-- ===== 04 VERTICALES ===== -->
-<section id="verticales" class="oscura">
+<!-- ===== 05 VERTICALES ===== -->
+<section id="verticales">
   <div class="wrap">
-    <div class="sec-head rev"><span class="sec-num">04</span><h2>IA para tu caso concreto</h2></div>
+    <div class="sec-head rev"><span class="sec-num">05</span><h2>IA para tu caso concreto</h2></div>
     <p class="sec-desc rev">El método general está en la serie. Esto es lo mismo, aterrizado en TU situación: oposiciones, estudios, negocio propio o tu sistema personal.</p>
     <div class="grid">
       <div class="card rev">
@@ -377,10 +487,10 @@
   </div>
 </section>
 
-<!-- ===== 05 CLAUDE CODE ===== -->
-<section id="claudecode">
+<!-- ===== 06 CLAUDE CODE ===== -->
+<section id="claudecode" class="oscura">
   <div class="wrap">
-    <div class="sec-head rev"><span class="sec-num">05</span><h2>Claude Code: el nivel pro</h2></div>
+    <div class="sec-head rev"><span class="sec-num">06</span><h2>Claude Code: el nivel pro</h2></div>
     <p class="sec-desc rev">Dos series por tomos para pasar de "uso la IA" a "la IA trabaja para mí". AVANZADO si vienes del chat; EXTREMO si quieres agentes, MCP y producto.</p>
     <div class="grid">
       <div class="card rev">
@@ -447,6 +557,29 @@
   </div>
 </section>
 
+<!-- ===== LISTA / 11% ===== -->
+<section id="lista" class="lista-sec">
+  <div class="wrap">
+    <div class="lista-caja rev">
+      <h2>Apúntate y llévate un <span class="subrayado">11%</span></h2>
+      <p>Un email a la semana con un sistema que copias en cinco minutos. Nada de spam, nada de humo. Y al entrar, el código de descuento para cualquier manual de la web.</p>
+
+      <form class="lista-form" id="form-lista" novalidate>
+        <input type="email" name="email" id="email-lista" placeholder="tu@correo.com" required autocomplete="email" aria-label="Tu correo electrónico">
+        <button type="submit">Quiero el 11%</button>
+      </form>
+      <p class="lista-nota">Cero spam · Te puedes borrar en un clic</p>
+
+      <div class="lista-ok" id="lista-ok" role="status">
+        <small>Tu código de descuento</small>
+        <span class="codigo">YANOVALES11</span>
+        <small>11% en cualquier manual · Pégalo en el checkout</small>
+        <p style="color:rgba(244,241,234,.72);font-size:.9rem;margin-top:16px">Se ha abierto una pestaña para confirmar tu correo. Confírmalo y te llega el primer email hoy mismo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CTA FINAL ===== -->
 <section class="final">
   <div class="wrap rev">
@@ -454,7 +587,7 @@
     <p>Cada semana que lo pospones, alguien de tu sector la aprovecha. Empieza por un PDF gratis y decide con hechos, no con miedo.</p>
     <div class="hero-ctas">
       <a class="btn btn-lleno" href="https://yanovales.gumroad.com/l/20-prompts-gratis" target="_blank" rel="noopener"><span>Dame los 20 prompts</span></a>
-      <a class="btn btn-vacio" href="https://yanovales.gumroad.com" target="_blank" rel="noopener"><span>Ver la tienda entera</span></a>
+      <a class="btn btn-vacio" href="#amazon"><span>Ver la serie Express</span></a>
     </div>
   </div>
 </section>
@@ -467,15 +600,23 @@
         <div class="foot-lema">Todavía. Muévete.</div>
       </div>
       <div class="foot-links">
-        <a href="https://yanovales.gumroad.com" target="_blank" rel="noopener">Tienda Gumroad</a>
+        <span class="foot-titulo">Sígueme</span>
         <a href="https://www.instagram.com/yanovales_" target="_blank" rel="noopener">Instagram @yanovales_</a>
-        <a href="https://linktr.ee/yanovales" target="_blank" rel="noopener">Linktree</a>
+        <a href="https://www.tiktok.com/@yanovales" target="_blank" rel="noopener">TikTok @yanovales</a>
+        <a href="https://www.youtube.com/@yanovales" target="_blank" rel="noopener">YouTube @yanovales</a>
       </div>
       <div class="foot-links">
+        <span class="foot-titulo">Catálogo</span>
         <a href="#gratis">Guías gratis</a>
         <a href="#serie">La serie</a>
+        <a href="#amazon">Serie Express en Amazon</a>
         <a href="#web">Lote Web</a>
         <a href="#claudecode">Claude Code</a>
+      </div>
+      <div class="foot-links">
+        <span class="foot-titulo">Contacto</span>
+        <a href="mailto:hola@yanovales.es">hola@yanovales.es</a>
+        <span class="foot-nota">Escribe y contesto yo, en persona.<br>No hay bot. Menos de 24 h.</span>
       </div>
     </div>
     <div class="foot-bajo">
@@ -485,13 +626,108 @@
   </div>
 </footer>
 
+<!-- ===== BANNER FIJO 11% ===== -->
+<aside class="banner" id="banner" aria-label="Descuento por suscripción">
+  <div class="banner-inner">
+    <p class="banner-txt">Apúntate a la lista y llévate un <b>11% en todos los manuales</b>.</p>
+    <form class="banner-form" id="form-banner" novalidate>
+      <input type="email" name="email" id="email-banner" placeholder="tu@correo.com" required autocomplete="email" aria-label="Tu correo electrónico">
+      <button type="submit">Quiero el 11%</button>
+    </form>
+  </div>
+  <button class="banner-cerrar" id="cerrar-banner" aria-label="Cerrar">✕</button>
+</aside>
+
 <script>
   // nav sólida al hacer scroll
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>{nav.classList.toggle('solida',scrollY>40)},{passive:true});
+
   // reveal on scroll
   const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visto');io.unobserve(e.target)}})},{threshold:.12});
   document.querySelectorAll('.rev').forEach(el=>io.observe(el));
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     CAPTURA DE EMAIL + CUPÓN DEL 11%
+
+     El alta se hace en la landing de Kit (ya publicada): al enviar cualquiera
+     de los dos formularios se abre Kit en una pestaña nueva con el correo ya
+     escrito, y aquí se muestra el código al instante.
+
+     ¿Quieres el alta sin salir de la web? Crea un formulario en Kit
+     (Grow → Forms → Embed) y cambia KIT_LANDING por su acción POST.
+
+     El cupón YANOVALES11 tiene que existir en Gumroad para que funcione.
+     ═══════════════════════════════════════════════════════════════════════ */
+  const KIT_LANDING = 'https://ya-no-vales.kit.com/fe0b6f183d';
+  const CODIGO      = 'YANOVALES11';
+  const ESPERA_MS   = 9000;   // cuánto tarda en aparecer el banner
+
+  const banner   = document.getElementById('banner');
+  const secLista = document.getElementById('lista');
+  const formLista  = document.getElementById('form-lista');
+  const formBanner = document.getElementById('form-banner');
+
+  // El código vive en una sola variable: si lo cambias arriba, cambia en la web.
+  document.querySelector('.lista-ok .codigo').textContent = CODIGO;
+
+  let suscrito = false, cerrado = false, listaVisible = false, yaPodemos = false;
+  try{
+    suscrito = localStorage.getItem('ynv_lista')   === '1';
+    cerrado  = localStorage.getItem('ynv_banner')  === 'cerrado';
+  }catch(e){}
+
+  function pintarBanner(){
+    const mostrar = yaPodemos && !suscrito && !cerrado && !listaVisible;
+    banner.classList.toggle('visible', mostrar);
+  }
+
+  function valido(email){ return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email); }
+
+  function mostrarCodigo(){
+    formLista.style.display = 'none';
+    document.querySelector('.lista-nota').style.display = 'none';
+    document.getElementById('lista-ok').classList.add('visible');
+  }
+
+  function apuntar(email){
+    window.open(KIT_LANDING + '?email_address=' + encodeURIComponent(email), '_blank', 'noopener');
+    suscrito = true;
+    try{ localStorage.setItem('ynv_lista','1'); }catch(e){}
+    pintarBanner();
+    mostrarCodigo();
+  }
+
+  formLista.addEventListener('submit', e => {
+    e.preventDefault();
+    const campo = document.getElementById('email-lista');
+    if(!valido(campo.value.trim())){ campo.focus(); return; }
+    apuntar(campo.value.trim());
+  });
+
+  formBanner.addEventListener('submit', e => {
+    e.preventDefault();
+    const campo = document.getElementById('email-banner');
+    if(!valido(campo.value.trim())){ campo.focus(); return; }
+    apuntar(campo.value.trim());
+    secLista.scrollIntoView({behavior:'smooth'});
+  });
+
+  document.getElementById('cerrar-banner').addEventListener('click', ()=>{
+    cerrado = true;
+    try{ localStorage.setItem('ynv_banner','cerrado'); }catch(e){}
+    pintarBanner();
+  });
+
+  // El banner se aparta cuando la sección naranja de suscripción está en
+  // pantalla: si no, dos bloques del mismo color se pisan y el mensaje se repite.
+  new IntersectionObserver(es=>{
+    es.forEach(e=>{ listaVisible = e.isIntersecting; });
+    pintarBanner();
+  },{threshold:.25}).observe(secLista);
+
+  // Nunca antes de tiempo: el banner sólo entra en juego pasada la espera.
+  setTimeout(()=>{ yaPodemos = true; pintarBanner(); }, ESPERA_MS);
 </script>
 <!-- Checkout de Gumroad en overlay (el cliente compra sin salir de la web) -->
 <script src="https://gumroad.com/js/gumroad.js"></script>
