@@ -222,7 +222,6 @@
     <div class="nav-links">
       <a href="#gratis">Gratis</a>
       <a href="#serie">La serie</a>
-      <a href="#amazon">Amazon</a>
       <a href="#web">Web</a>
       <a href="#verticales">Por casos</a>
       <a href="#claudecode">Claude Code</a>
@@ -253,8 +252,8 @@
 
 <div class="cinta" aria-hidden="true">
   <div class="cinta-inner">
-    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>También en <b>Amazon Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
-    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>También en <b>Amazon Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Compatible con <b>Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
+    <span>Todavía. <b>Muévete.</b></span><span>Sin humo</span><span>Sin tecnicismos</span><span>PDF inmediato</span><span>Compatible con <b>Kindle</b></span><span>Actualizaciones incluidas</span><span>Garantía de devolución</span>
   </div>
 </div>
 
@@ -264,7 +263,7 @@
     <div class="stats rev">
       <div class="stat"><div class="cifra">21<span>+</span></div><div class="etiq">Manuales publicados</div></div>
       <div class="stat"><div class="cifra">308</div><div class="etiq">Prompts probados</div></div>
-      <div class="stat"><div class="cifra">4</div><div class="etiq">Títulos en Amazon</div></div>
+      <div class="stat"><div class="cifra">6</div><div class="etiq">Módulos Claude Code</div></div>
       <div class="stat"><div class="cifra">0<span>%</span></div><div class="etiq">Humo</div></div>
     </div>
   </div>
@@ -347,7 +346,19 @@
 </section>
 
 <!-- ===== 03 AMAZON / KINDLE ===== -->
-<section id="amazon">
+<!-- ═══════════════════════════════════════════════════════════════════════
+     SECCIÓN AMAZON — OCULTA (18-jul-2026)
+     Motivo: en KDP no hay NINGÚN título publicado todavía.
+       · Emprende con IA (4,99 €) → En revisión
+       · Consigue el Trabajo (3,99 €) → Borrador
+       · Tu Vida Resuelta (3,99 €) → Borrador
+       · IA para Estudiar (2,99 €) → NO existe en KDP
+     Con la sección visible, los 4 botones llevaban a búsquedas vacías en
+     Amazon.es. PARA REACTIVARLA: quita el style="display:none" de abajo,
+     sustituye los 4 href de amazon.es/s?k= por https://www.amazon.es/dp/ASIN,
+     devuelve el enlace "Amazon" al nav y al footer, y revisa el 4º título.
+     ═══════════════════════════════════════════════════════════════════════ -->
+<section id="amazon" style="display:none">
   <div class="wrap">
     <div class="sec-head rev"><span class="sec-num">03</span><h2>Serie Express: en Amazon, desde 2,99&nbsp;€</h2></div>
     <p class="sec-desc rev">Cuatro manuales breves, uno por problema concreto. Se leen en una tarde y se aplican esa misma noche. En Kindle, con Kindle Unlimited y con la comodidad de comprarlos donde ya tienes la cuenta.</p>
@@ -587,7 +598,7 @@
     <p>Cada semana que lo pospones, alguien de tu sector la aprovecha. Empieza por un PDF gratis y decide con hechos, no con miedo.</p>
     <div class="hero-ctas">
       <a class="btn btn-lleno" href="https://yanovales.gumroad.com/l/20-prompts-gratis" target="_blank" rel="noopener"><span>Dame los 20 prompts</span></a>
-      <a class="btn btn-vacio" href="#amazon"><span>Ver la serie Express</span></a>
+      <a class="btn btn-vacio" href="#serie"><span>Ver los manuales</span></a>
     </div>
   </div>
 </section>
@@ -609,7 +620,6 @@
         <span class="foot-titulo">Catálogo</span>
         <a href="#gratis">Guías gratis</a>
         <a href="#serie">La serie</a>
-        <a href="#amazon">Serie Express en Amazon</a>
         <a href="#web">Lote Web</a>
         <a href="#claudecode">Claude Code</a>
       </div>
