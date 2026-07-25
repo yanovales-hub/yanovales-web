@@ -222,6 +222,7 @@
     <div class="nav-links">
       <a href="#gratis">Gratis</a>
       <a href="#serie">La serie</a>
+      <a href="#amazon">Amazon</a>
       <a href="#web">Web</a>
       <a href="#verticales">Por casos</a>
       <a href="#claudecode">Claude Code</a>
@@ -347,21 +348,20 @@
 
 <!-- ===== 03 AMAZON / KINDLE ===== -->
 <!-- ═══════════════════════════════════════════════════════════════════════
-     SECCIÓN AMAZON — OCULTA (18-jul-2026)
-     Motivo: en KDP no hay NINGÚN título publicado todavía.
-       · Emprende con IA (4,99 €) → En revisión
-       · Consigue el Trabajo (3,99 €) → Borrador
-       · Tu Vida Resuelta (3,99 €) → Borrador
-       · IA para Estudiar (2,99 €) → NO existe en KDP
-     Con la sección visible, los 4 botones llevaban a búsquedas vacías en
-     Amazon.es. PARA REACTIVARLA: quita el style="display:none" de abajo,
-     sustituye los 4 href de amazon.es/s?k= por https://www.amazon.es/dp/ASIN,
-     devuelve el enlace "Amazon" al nav y al footer, y revisa el 4º título.
+     SECCIÓN AMAZON — REACTIVADA (25-jul-2026)
+     Estado en KDP:
+       · Emprende con IA (4,99 €)     → LIVE  · ASIN B0H9LYKPH9  ✅ visible
+       · Consigue el Trabajo (3,99 €) → LIVE  · ASIN B0H9MF5S3C  ✅ visible
+       · Tu Vida Resuelta (3,99 €)    → Borrador → tarjeta COMENTADA abajo
+       · IA para Estudiar (2,99 €)    → Borrador → tarjeta COMENTADA abajo
+     Al publicar las dos en borrador: descomenta su tarjeta y cambia el href
+     amazon.es/s?k=... por https://www.amazon.es/dp/ASIN. Enlace "Amazon" ya
+     está en el nav y en el footer.
      ═══════════════════════════════════════════════════════════════════════ -->
-<section id="amazon" style="display:none">
+<section id="amazon">
   <div class="wrap">
-    <div class="sec-head rev"><span class="sec-num">03</span><h2>Serie Express: en Amazon, desde 2,99&nbsp;€</h2></div>
-    <p class="sec-desc rev">Cuatro manuales breves, uno por problema concreto. Se leen en una tarde y se aplican esa misma noche. En Kindle, con Kindle Unlimited y con la comodidad de comprarlos donde ya tienes la cuenta.</p>
+    <div class="sec-head rev"><span class="sec-num">03</span><h2>Serie Express: en Amazon, desde 3,99&nbsp;€</h2></div>
+    <p class="sec-desc rev">Manuales breves, uno por problema concreto. Se leen en una tarde y se aplican esa misma noche. En Kindle, con Kindle Unlimited y con la comodidad de comprarlos donde ya tienes la cuenta.</p>
 
     <!-- ═══════════════════════════════════════════════════════════════════════
          PENDIENTE AL PUBLICAR EN KDP
@@ -380,7 +380,7 @@
         <p>De cero a un negocio pequeño y real en cuatro pasos: vende lo que ya tienes, monta tu marca, abre tu tienda y publica tu primer producto digital. Sin programar y sin diseñador.</p>
         <div class="card-foot">
           <span class="precio">4,99€<small>Kindle · 62 págs</small></span>
-          <a class="card-btn" href="https://www.amazon.es/s?k=Emprende+con+IA+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+          <a class="card-btn" href="https://www.amazon.es/dp/B0H9LYKPH9" target="_blank" rel="noopener">Ver en Amazon</a>
         </div>
       </div>
       <div class="card rev rev-d1">
@@ -389,9 +389,12 @@
         <p>Tu CV no lo lee un humano: lo lee un software. Las tres pruebas por separado — el filtro ATS, lo que hay que escribir y la prueba en directo. Con 45 prompts y simulacro de criba.</p>
         <div class="card-foot">
           <span class="precio">3,99€<small>Kindle · 45 págs</small></span>
-          <a class="card-btn" href="https://www.amazon.es/s?k=Consigue+el+Trabajo+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
+          <a class="card-btn" href="https://www.amazon.es/dp/B0H9MF5S3C" target="_blank" rel="noopener">Ver en Amazon</a>
         </div>
       </div>
+      <!-- OCULTAS 25-jul: Tu Vida Resuelta e IA para Estudiar siguen en BORRADOR en KDP.
+           Al publicarlas, descomentar y poner href="https://www.amazon.es/dp/ASIN". -->
+      <!--
       <div class="card rev rev-d2">
         <span class="card-tag tag-amazon"><span class="punto"></span>Express C · Kindle</span>
         <h3>Tu Vida Resuelta</h3>
@@ -411,6 +414,7 @@
           <a class="card-btn" href="https://www.amazon.es/s?k=IA+para+Estudiar+Ya+No+Vales" target="_blank" rel="noopener">Ver en Amazon</a>
         </div>
       </div>
+      -->
     </div>
 
     <p class="kindle-nota rev"><b>¿Kindle o PDF?</b> Los Express son la puerta de entrada: cortos, baratos y en Amazon. Los manuales largos de esta web son PDF y se compran aquí — pero también puedes mandarlos a tu Kindle desde <a href="https://www.amazon.es/sendtokindle" target="_blank" rel="noopener" style="border-bottom:1.5px solid var(--naranja)">amazon.es/sendtokindle</a>. Ninguna compra te ata a un dispositivo.</p>
@@ -620,6 +624,7 @@
         <span class="foot-titulo">Catálogo</span>
         <a href="#gratis">Guías gratis</a>
         <a href="#serie">La serie</a>
+        <a href="#amazon">En Amazon</a>
         <a href="#web">Lote Web</a>
         <a href="#claudecode">Claude Code</a>
       </div>
